@@ -7,9 +7,8 @@ Website: https://github.com/smarterclayton/openshift-go-cart
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: smarterclayton
 Categories:
-  - service
   - golang
-  - web_framework
+  - plugin
 Provides:
   - go-1.1
   - "go"
@@ -20,8 +19,8 @@ Scaling:
   Min: 1
   Max: -1
 Publishes:
-  get-doc-root:
-    Type: "FILESYSTEM:doc-root"
+#  get-doc-root:
+#    Type: "FILESYSTEM:doc-root"
   publish-http-url:
     Type: "NET_TCP:httpd-proxy-info"
   publish-gear-endpoint:
