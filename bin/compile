@@ -26,9 +26,9 @@ PATH=$venv/bin:$PATH
 #    python "$buildpack/vendor/virtualenv-1.7/virtualenv.py" "$@"
 #}
 
-setup=false
+setup=1
 if [ "$3" == "NONE" ]; then
-    setup=true
+    setup=0
     echo >&2 " * Running setup"
 fi
 
@@ -64,13 +64,15 @@ then
     . $venv/bin/activate 2>&1 > /dev/null
     echo >&2 " done"
 
-    echo >&2 -n "       Installing Mercurial..."
-    pip install --use-mirrors mercurial 2>&1 > /dev/null
-    echo >&2 " done"
+    if [ ! $setup ]; then
+        echo >&2 -n "       Installing Mercurial..."
+        pip install --use-mirrors mercurial 2>&1 > /dev/null
+        echo >&2 " done"
 
-    echo >&2 -n "       Installing Bazaar..."
-    pip install --use-mirrors bzr 2>&1 > /dev/null
-    echo >&2 " done"
+        echo >&2 -n "       Installing Bazaar..."
+        pip install --use-mirrors bzr 2>&1 > /dev/null
+        echo >&2 " done"
+    fi
 fi
 
 if [ "$3" == "NONE" ]; then
