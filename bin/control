@@ -10,10 +10,6 @@ function status() {
 }
 
 
-function start() {
-    exit 0
-}
-
 function stop() {
     exit 0
 }
@@ -24,7 +20,11 @@ function restart() {
 }
 
 function build() {
-    ${OPENSHIFT_GO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_GO_DIR}/cache
+    ${OPENSHIFT_GO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_GO_DIR}/cache $1
+}
+
+function start() {
+    build NONE
 }
 
 function post-deploy() {
