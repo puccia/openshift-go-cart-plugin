@@ -24,8 +24,7 @@ function restart() {
 }
 
 function build() {
-    exit 0
-    #${OPENSHIFT_GO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_GO_DIR}/cache
+    ${OPENSHIFT_GO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_GO_DIR}/cache
 }
 
 function post-deploy() {
