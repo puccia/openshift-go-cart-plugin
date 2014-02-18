@@ -1,12 +1,13 @@
-Name: go
+Name: golang
 Cartridge-Short-Name: GO
 Display-Name: Go 1.1.2
 Version: "1.1.2"
 Versions: ["1.1.2", "1.0.3"]
 Website: https://github.com/smarterclayton/openshift-go-cart
-Cartridge-Version: 0.0.1
-Cartridge-Vendor: smarterclayton
+Cartridge-Version: 0.0.2
+Cartridge-Vendor: eagain
 Categories:
+  - service
   - golang
   - plugin
 Provides:
@@ -19,41 +20,10 @@ Scaling:
   Min: 1
   Max: -1
 Publishes:
-#  get-doc-root:
-#    Type: "FILESYSTEM:doc-root"
-  publish-http-url:
-    Type: "NET_TCP:httpd-proxy-info"
-  publish-gear-endpoint:
-    Type: "NET_TCP:gear-endpoint-info"
-Subscribes:
-  set-db-connection-info:
-    Type: "ENV:NET_TCP:db:connection-info"
-    Required: false
-  set-mysql-connection-info:
-    Type: "NET_TCP:db:mysql"
-    Required : false
-  set-postgres-connection-info:
-    Type: "NET_TCP:db:postgres"
-    Required : false
-  set-nosql-db-connection-info:
-    Type: "ENV:NET_TCP:nosqldb:connection-info"
-    Required : false
-Group-Overrides:
-  - components:
-    - go-1.1
-    - web_proxy
-Endpoints:
-  - Private-IP-Name:   IP
-    Private-Port-Name: PORT
-    Private-Port:      8080
-    Public-Port-Name:  PROXY_PORT
-    Mappings:
-      - Frontend:      ""
-        Backend:       ""
-        Options:       { websocket: true }
-      - Frontend:      "/health"
-        Backend:       ""
-        Options:       { health: true }
+  get-doc-root:
+    Type: "FILESYSTEM:doc-root"
+  publish-golang-bindir:
+    Type: "FILESYSTEM:golang-bin"
 Install-Build-Required: true
 Version-Overrides:
   '1.0.3':
