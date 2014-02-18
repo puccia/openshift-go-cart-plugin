@@ -23,5 +23,5 @@ done
 popd > /dev/null
 
 # Prepare environment
-chmod +x ${OPENSHIFT_GO_DIR}/bin/start
-${OPENSHIFT_GO_DIR}/bin/start
+chmod +x ${OPENSHIFT_GO_DIR}/bin/control start
+${OPENSHIFT_GO_DIR}/bin/control start
